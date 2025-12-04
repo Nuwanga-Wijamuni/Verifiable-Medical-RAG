@@ -1,0 +1,25 @@
+# --- User Specific ---
+PDF.py
+FullBoodReports/
+# --- Security & Config ---
+.env
+.vscode/
+.idea/
+*.log
+
+# --- Python & Dependencies ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# --- Data & Local Storage (Don't push patient data!) ---
+data/
+chroma_db/
+weaviate_data/
+
+# --- Operating System ---
+.DS_Store
+Thumbs.db
