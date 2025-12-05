@@ -1,0 +1,28 @@
+version: '3.4'
+services:
+  weaviate:
+    command:
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8080'
+    - --scheme
+    - http
+    image: semitechnologies/weaviate:1.24.1
+    ports:
+    - 8080:8080
+    - 50051:50051
+    volumes:
+    - ./weaviate_data:/var/lib/weaviate
+    restart: on-failure:0
+    environment:
+      # CRITICAL CHANGE: Disable all internal vectorizers to prevent startup crashes.
+      # We are doing vectorization in Python (Google SDK), so we don't need Weaviate to do it.
+      ENABLE_MODULES: ''
+      DEFAULT_VECTORIZER_MODULE: 'none'
+      
+      # Standard Settings
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      CLUSTER_HOSTNAME: 'node1'

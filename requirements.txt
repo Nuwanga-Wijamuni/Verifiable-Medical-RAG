@@ -1,20 +1,21 @@
-# --- FastAPI & Server ---
 fastapi>=0.109.0
-llama-index-core
+uvicorn[standard]>=0.27.0
 python-multipart>=0.0.9
 python-dotenv>=1.0.0
-uvicorn[standard]
-# --- RAG & Orchestration ---
-langchain>=0.1.0
-langchain-community>=0.0.10
-langchain-core>=0.1.10
-langchain-weaviate>=0.0.1
-weaviate-client>=4.4.0
 
-# --- Ingestion (The "Eyes") ---
-llama-parse>=0.4.0        # Specialized for PDF Tables/Scans
-nest_asyncio>=1.6.0       # Required for running LlamaParse in scripts
+#-- Database ---
 
-# --- LLM (The "Brain") ---
-langchain-groq>=0.1.0     # For fast, OSS inference (Llama 3)
-langchain-google-genai     # Optional fallback
+#sing stable v3 client to avoid v4 init issues
+
+weaviate-client==3.26.7
+
+#-- Ingestion ---
+
+llama-parse>=0.4.0
+nest_asyncio>=1.6.0
+
+#-- AI / ML ---
+
+google-generativeai>=0.3.0  # Embeddings
+groq>=0.4.0                 # Inference (Future)
+numpy>=1.26

@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env file
 env_path = Path(__file__).resolve().parent.parent.parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
@@ -24,11 +23,12 @@ class Settings:
     PROCESSED_DATA_DIR: Path = DATA_DIR / "processed"
 
     def __init__(self):
-        # Validate critical keys for Phase 1
         if not self.LLAMA_CLOUD_API_KEY:
-            print("⚠️  WARNING: LLAMA_CLOUD_API_KEY is missing. Ingestion will fail.")
+            print("⚠️  WARNING: LLAMA_CLOUD_API_KEY is missing.")
+        if not self.GOOGLE_API_KEY:
+            print("⚠️  WARNING: GOOGLE_API_KEY is missing.")
             
         os.makedirs(self.RAW_DATA_DIR, exist_ok=True)
         os.makedirs(self.PROCESSED_DATA_DIR, exist_ok=True)
 
-settings = Settings()
+settings = Settings()    

@@ -4,14 +4,13 @@ import weaviate
 def get_weaviate_client():
     """
     Returns a Weaviate client instance.
-    You can use this in your routes: client = Depends(get_weaviate_client)
     """
-    # Assuming local Weaviate for now based on your assessment constraints
-    # If using Weaviate Cloud, you'd add auth_client_secret here
+    # Note: Weaveite client connection is synchronous, designed for use with FastAPI Depends
     client = weaviate.Client(
-        url=settings.WEAVIATE_URL, 
+        url=settings.WEAVIATE_URL,
         additional_headers={
-            "X-OpenAI-Api-Key": settings.OPENAI_API_KEY # If using OpenAI embeddings internally
+            # Removed the problematic "X-OpenAI-Api-Key" header check
+            "X-Google-Api-Key": settings.GOOGLE_API_KEY or "" # Pass Google Key if needed by Weaviate module
         }
     )
     return client
