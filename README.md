@@ -6,7 +6,7 @@ A specialized Retrieval-Augmented Generation (RAG) system designed to deliver ac
 
 **Try the application here:** [Verifiable Medical RAG Web Interface](https://huggingface.co/spaces/Nuwa98/verifiable-medical-rag)
 
-*Note: Replace the above URL with your actual deployed application URL*
+
 
 ## 🚀 Key Features
 
